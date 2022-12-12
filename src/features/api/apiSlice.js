@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://fake--json-server.herokuapp.com/",
+    baseUrl: "https://fake-product-api-json-server.vercel.app/",
   }),
   tagTypes: ["Filtered", "Todos"],
   endpoints: (builder) => ({
@@ -28,7 +28,7 @@ export const apiSlice = createApi({
         }
         return queryString;
       },
-      providesTags: [ "Filtered"],
+      providesTags: ["Filtered"],
     }),
     addTodo: builder.mutation({
       query: (data) => ({
@@ -44,10 +44,7 @@ export const apiSlice = createApi({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: [
-        "Filtered",
-        "Todos",
-      ],
+      invalidatesTags: ["Filtered", "Todos"],
     }),
     deleteTodo: builder.mutation({
       query: (id) => ({
